@@ -7,6 +7,8 @@ import { jwtDecode } from "jwt-decode";
 import { BarLoader } from "react-spinners";
 import { css } from "@emotion/react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function HeroSection() {
 	const navigate = useNavigate();
 	const [showModal, setShowModal] = useState(false);
@@ -46,7 +48,7 @@ function HeroSection() {
 	useMemo(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get("http://localhost:4000/getUsers");
+				const response = await axios.get(`${API_URL}/getUsers`);
 				setEmployeesData(response.data);
 			} catch (error) {
 				setError(error);
@@ -114,7 +116,7 @@ function HeroSection() {
 
 		axios
 			.post(
-				"http://localhost:4000/vote",
+				`${API_URL}/vote`,
 				{
 					voterId: voterId,
 					votedForId: selectedVoteId,
