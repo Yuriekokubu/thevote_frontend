@@ -1,0 +1,26 @@
+.App {
+	text-align: center;
+}
+
+.votes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 20px;
+}
+
+.vote-item {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.title {
+	margin-top: 20px; /* Add margin top */
+	margin-bottom: 20px; /* Add margin bottom */
+}
+
+.votes-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 20px;
+	padding: 20px; /* Add padding to create space around cards */
+}
