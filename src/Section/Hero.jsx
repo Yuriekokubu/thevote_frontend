@@ -62,15 +62,25 @@ function HeroSection() {
 	if (loading) return <BarLoader color={"#36D7B7"} loading={loading} css={override} />;
 	if (!employeesData) return <div>Loading...</div>;
 
+	const getImageSrc = (prefixGender) => {
+		if (prefixGender === "นาย") {
+			return "https://wongnok.s3.ap-east-1.amazonaws.com/TheVote/img/man.png";
+		} else if (prefixGender === "นาง" || prefixGender === "นางสาว") {
+			return "https://wongnok.s3.ap-east-1.amazonaws.com/TheVote/img/woman.png";
+		}
+		return "https://wongnok.s3.ap-east-1.amazonaws.com/TheVote/img/man.png";
+	};
+
 	const cardsData = shuffledData.map((employee, index) => {
 		let nameParts = employee.username.split(" ");
 		let prefixGender = nameParts[0];
 		let firstName = nameParts[1];
 		let lastName = nameParts[2];
+		// `https://pictureapi.pea.co.th/MyphotoAPI/api/v1/Main/GetPicImg?EmpCode=${employee.pea_id}&Type=2&SType=2`;
 
 		return {
 			id: index + 1,
-			imageSrc: `https://pictureapi.pea.co.th/MyphotoAPI/api/v1/Main/GetPicImg?EmpCode=${employee.pea_id}&Type=2&SType=2`,
+			imageSrc: getImageSrc(prefixGender),
 			emp_id: `${employee.pea_id}`,
 			username: employee.username,
 			firstName,
@@ -149,7 +159,7 @@ function HeroSection() {
 				<div className="overlay"></div>
 				<div className="container">
 					<h1 className="banner-title">กองบริหารจัดการระบบวัดพลังงานไฟฟ้า</h1>
-					<p className="banner-description">โครงการค้นหาบุคลากรมาสาย 3 อันดับแรก</p>
+					<p className="banner-description"></p>
 					<b>
 						<p className="banner-description">ประจำเดือนพฤษภาคม</p>
 					</b>

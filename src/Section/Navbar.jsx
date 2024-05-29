@@ -19,7 +19,9 @@ function Navbar() {
 			<div className="container mx-auto flex justify-between items-center">
 				<div className="flex items-center text-white font-bold text-lg">
 					<CheckCircleIcon className="h-6 w-6 mr-2" /> {/* Add FireIcon with margin */}
-					<span>The Vote</span> {/* Wrap text in a span */}
+					<StyledLink to="/" className={linkStyles}>
+						The Vote
+					</StyledLink>
 				</div>
 				<StyledList>
 					<li>
